@@ -48,5 +48,5 @@ Please check out my original wireframe [here](https://wireframe.cc/WdWGJI). I ma
 - Pretty much everything right now!
 - I have no idea how to integrate the logo right now in my style
 
-### Inisprations
+### Inspirations
 - https://codepen.io/cathydutton/pen/ldazc
