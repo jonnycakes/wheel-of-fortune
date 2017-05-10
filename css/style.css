@@ -12,14 +12,24 @@ main {
 }
 
 aside {
-
+  background-color: blue;
+  height: 200px;
 }
 
+
+#wrapper {
+  max-width: 960px;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px #000 solid;
+}
 
 /* Puzzle */
 
 #puzzle-wrapper {
-
+  background-color: green;
+  height: 200px;
 }
 
 /* Gameplay Section */
@@ -100,5 +110,5 @@ aside {
 }
 
 #submit-player-names {
-  
+
 }

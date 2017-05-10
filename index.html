@@ -16,49 +16,57 @@
 
 
     <!-- Javascripts -->
-    <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/vendor/js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/vendor/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
 
 
   </head>
   <body>
-    <main>
-      <div id="puzzle-wrapper">
 
-      </div>
 
-      <div id="gameplay-wrapper">
-          <div id="wheel">
+    <div id="wrapper" class="container-fluid" >
+      <div class="row">
 
+        <main class="col-xs-10">
+
+          <div id="puzzle-wrapper">
+puzzle
           </div>
 
-          <div id="inputs">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-              Player names
-            </button>
-              <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
-              <button id="submit-text">submit</button>
+          <div id="gameplay-wrapper">
+              <div id="wheel">
+
+              </div>
+
+              <div id="inputs">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                  Player names
+                </button>
+                  <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
+                  <button id="submit-text">submit</button>
+              </div>
           </div>
-      </div>
-    </main>
+        </main>
 
-    <aside>
-      <div class="player" id="player-1">
-        <div class="player-name-display" id="player-1-name"></div>
-        <div class="score" id="player-1-score"></div>
+        <aside class="col-xs-2">
+          <h1>HELLOR</h1>
+          <div class="player" id="player-1">
+            <div class="player-name-display" id="player-1-name"></div>
+            <div class="score" id="player-1-score"></div>
+          </div>
+          <div class="player" id="player-2">
+            <div class="player-name-display" id="player-2-name"></div>
+            <div class="score" id="player-2-score"></div>
+          </div>
+          <div class="player" id="player-3">
+            <div class="player-name-display" id="player-3-name"></div>
+            <div class="score" id="player-3-score"></div>
+          </div>
+        </aside>
       </div>
-      <div class="player" id="player-2">
-        <div class="player-name-display" id="player-2-name"></div>
-        <div class="score" id="player-2-score"></div>
-      </div>
-      <div class="player" id="player-3">
-        <div class="player-name-display" id="player-3-name"></div>
-        <div class="score" id="player-3-score"></div>
-      </div>
-    </aside>
-
+    </div>
 
 
 
