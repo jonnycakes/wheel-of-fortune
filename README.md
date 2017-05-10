@@ -1,5 +1,4 @@
-![Wheel]
-(https://pmcdeadline2.files.wordpress.com/2012/10/wheeloffortune__121029164437.jpg)
+![Wheel](https://pmcdeadline2.files.wordpress.com/2012/10/wheeloffortune__121029164437.jpg)
 
 
 # Wheel of Fortune!
