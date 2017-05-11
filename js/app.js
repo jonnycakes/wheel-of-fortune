@@ -24,6 +24,7 @@ $(document).ready(function() {
   var player3Score = 0;
   var turn = "player1"
   var amounts = ["300", "400", "500", "600", "800", "900", "1000"]
+  var newValue;
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
     "P", "Q", "R", "S", "T", "V", "X", "Z", "W", "Y"
   ]
@@ -51,9 +52,10 @@ $(document).ready(function() {
 
   var puzzle = words[Math.floor(Math.random() * words.length)]
   var letters = puzzle.toUpperCase().split("")
-  letters.forEach(function(letter) {
+  letters.forEach(function(letter, indexNum) {
     $("#puzzle-wrapper ul").append(
-      `<li><span class="start">${letter}</span></li>`)
+      `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>`
+    )
   })
 
   // **************************
@@ -82,12 +84,15 @@ $(document).ready(function() {
   // **************************
   // **************************
 
-
+  // Calculate a random amount when the wheel is spun
   var calculateAmount = function() {
-    let newValue = amounts[Math.floor(Math.random() * amounts.length)]
+    newValue = parseInt(amounts[Math.floor(Math.random() * amounts.length)])
     $("#spin-amount").text(newValue);
   }
 
+  // **************************
+  // **************************
+  // **************************
 
   // Spin the wheel!
   var spinWheel = function() {
@@ -101,5 +106,19 @@ $(document).ready(function() {
 
   $("#wheel").on("click", spinWheel)
 
-  console.log("end")
+  // **************************
+  // **************************
+  // **************************
+
+  // Pick a letter
+
+  $("#submit-text").on("click", function() {
+    letters.forEach(function(letter, indexNum) {
+      if ($("#guess-text").val().toUpperCase() === letter) {
+        player1Score += newValue;
+        $player1ScoreDisplay.text(player1Score)
+        $(`#indexNum${indexNum}`).removeClass("start")
+      }
+    })
+  })
 })
