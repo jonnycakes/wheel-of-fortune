@@ -23,6 +23,11 @@ $(document).ready(function() {
   var player2Score = 0;
   var player3Score = 0;
   var turn = "player1"
+  var amounts = ["300", "400", "500", "600", "800", "900", "1000"]
+  var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
+    "P", "Q", "R", "S", "T", "V", "X", "Z", "W", "Y"
+  ]
+  var vowels = ["A", "E", "I", "O", "U"]
 
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
@@ -72,9 +77,22 @@ $(document).ready(function() {
     }
   }
 
+
+  // **************************
+  // **************************
+  // **************************
+
+
+  var calculateAmount = function() {
+    let newValue = amounts[Math.floor(Math.random() * amounts.length)]
+    $("#spin-amount").text(newValue);
+  }
+
+
   // Spin the wheel!
   var spinWheel = function() {
     $("#wheel").addClass("spin");
+    calculateAmount();
     setTimeout(function() {
       $("#spinModal").modal("show")
       $("#wheel").removeClass("spin")
