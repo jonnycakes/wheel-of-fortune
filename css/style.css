@@ -7,13 +7,25 @@ body {
 
 }
 
+header {
+  height: 100px;
+  background-image: url(/assets/logo.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: 0 0 10px #bbb;
+  margin-bottom: 10px;
+  text-align: right;
+  line-height: 100px;
+  padding: 0 10px;
+}
+
 main {
 
 }
 
 aside {
-  background-color: blue;
-  height: 200px;
+  height: 100%;
 }
 
 
@@ -22,32 +34,45 @@ aside {
   height: 100%;
   width: 100%;
   margin: 0 auto;
-  border: 1px #000 solid;
+  /*border: 1px #000 solid;*/
+  overflow: hidden;
 }
 
 /* Puzzle */
 
 #puzzle-wrapper {
-  background-color: green;
-  height: 200px;
+  background-color: #9CFFA8;
+  height: 275px;
+  box-shadow: inset 0 0 100px #555;
 }
 
 /* Gameplay Section */
 
 #gameplay-wrapper {
-
+  display:flex;
 }
 
 #wheel {
-
+  flex: 1;
+  background-image: url(/assets/wheel.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 200px;
+  position: relative;
 }
 
 #inputs {
+  flex: 1;
+  padding: 5px;
+  min-width: 300px;
 
 }
 
 #guess-text {
-
+  width: 280px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 #submit-text {
@@ -69,7 +94,11 @@ aside {
 }
 
 #player-1 {
-
+  width: 100%;
+  background-color: #FF3129;
+  border: 1px #f00 solid;
+  height: 150px;
+  box-shadow: inset 0 0 60px #555;
 }
 
 #player-1-name {
@@ -81,7 +110,11 @@ aside {
 }
 
 #player-2 {
-
+  width: 100%;
+  background-color: #E8DC2B;
+  border: 1px #F1EE00 solid;
+  height: 150px;
+  box-shadow: inset 0 0 60px #555;
 }
 
 #player-2-name {
@@ -93,7 +126,11 @@ aside {
 }
 
 #player-3 {
-
+  width: 100%;
+  background-color: #3D74E8;
+  border: 1px #3DBEE8 solid;
+  height: 150px;
+  box-shadow: inset 0 0 60px #555;
 }
 
 #player-3-name {

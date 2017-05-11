@@ -24,11 +24,15 @@
   </head>
   <body>
 
-
+  <header>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Player names
+    </button>
+  </header>
     <div id="wrapper" class="container-fluid" >
       <div class="row">
 
-        <main class="col-xs-9">
+        <main class="col-xs-8">
 
           <div id="puzzle-wrapper">
 puzzle
@@ -41,17 +45,14 @@ puzzle
 
               <div id="inputs">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                  Player names
-                </button>
+
                   <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
                   <button id="submit-text">submit</button>
               </div>
           </div>
         </main>
 
-        <aside class="col-xs-3">
-          <h1>HELLOR</h1>
+        <aside class="col-xs-4">
           <div class="player" id="player-1">
             <div class="player-name-display" id="player-1-name"></div>
             <div class="score" id="player-1-score"></div>

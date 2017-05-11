@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  //hello
+  console.log("Hello")
 
-
+  // Useful Alisas
+  $player1NameText =
+    $player1NameDisplay =
 })
