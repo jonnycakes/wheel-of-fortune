@@ -113,12 +113,42 @@ $(document).ready(function() {
   // Pick a letter
 
   $("#submit-text").on("click", function() {
-    letters.forEach(function(letter, indexNum) {
-      if ($("#guess-text").val().toUpperCase() === letter) {
-        player1Score += newValue;
-        $player1ScoreDisplay.text(player1Score)
-        $(`#indexNum${indexNum}`).removeClass("start")
+    if (turn === "player1" && $("#guess-text").val() !== "") {
+      let startScore = player1Score;
+      letters.forEach(function(letter, indexNum) {
+        if ($("#guess-text").val().toUpperCase() === letter) {
+          player1Score += newValue;
+          $player1ScoreDisplay.text(player1Score)
+          $(`#indexNum${indexNum}`).removeClass("start")
+        }
+      })
+      if (startScore === player1Score) {
+        incrementTurn()
       }
-    })
+    } else if (turn === "player2" && $("#guess-text").val() !== "") {
+      let startScore = player2Score;
+      letters.forEach(function(letter, indexNum) {
+        if ($("#guess-text").val().toUpperCase() === letter) {
+          player2Score += newValue;
+          $player2ScoreDisplay.text(player2Score)
+          $(`#indexNum${indexNum}`).removeClass("start")
+        }
+      })
+      if (startScore === player2Score) {
+        incrementTurn()
+      }
+    } else {
+      let startScore = player3Score;
+      letters.forEach(function(letter, indexNum) {
+        if ($("#guess-text").val().toUpperCase() === letter) {
+          player3Score += newValue;
+          $player3ScoreDisplay.text(player3Score)
+          $(`#indexNum${indexNum}`).removeClass("start")
+        }
+      })
+      if (startScore === player3Score) {
+        incrementTurn()
+      }
+    }
   })
 })
