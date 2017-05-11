@@ -181,10 +181,12 @@ li {
   border: 10px dotted #3D74E8 !important;
 }
 
-.player-name-display {
+.player-name-display, .score {
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
+  font-family: sans-serif;
+  line-height: 60px;
 }
 
 /*Modal*/

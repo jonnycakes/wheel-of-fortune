@@ -7,10 +7,13 @@ $(document).ready(function() {
   // aliases!
   var $player1NameText = $("#player-1-name");
   var $player1NameDisplay = $("#player-1-name-display");
+  var $player1ScoreDisplay = $("#player-1-score")
   var $player2NameText = $("#player-2-name");
   var $player2NameDisplay = $("#player-2-name-display");
+  var $player2ScoreDisplay = $("#player-2-score")
   var $player3NameText = $("#player-3-name");
   var $player3NameDisplay = $("#player-3-name-display");
+  var $player3ScoreDisplay = $("#player-3-score")
   var $submitButton = $("#submit-player-names")
 
   // Userful Variables
@@ -23,9 +26,12 @@ $(document).ready(function() {
 
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
-    $player1NameDisplay.text(`Name: ${$player1NameText.val()}`)
-    $player2NameDisplay.text(`Name: ${$player2NameText.val()}`)
-    $player3NameDisplay.text(`Name: ${$player3NameText.val()}`)
+    $player1NameDisplay.text($player1NameText.val())
+    $player1ScoreDisplay.text("0")
+    $player2NameDisplay.text($player2NameText.val())
+    $player2ScoreDisplay.text("0")
+    $player3NameDisplay.text($player3NameText.val())
+    $player3ScoreDisplay.text("0")
   })
 
   // **************************
