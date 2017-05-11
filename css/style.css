@@ -50,6 +50,29 @@ aside {
 
 #gameplay-wrapper {
   display:flex;
+  text-align: center;
+}
+
+ul {
+  position: relative;
+  top: 100px;
+  padding: 10px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+li {
+  display: inline-block;
+  border: 1px #000 solid;
+  font-size: 40px;
+  width: 40px;
+  background-color: #FFF;
+  font-display:
+  text-align: center;
+}
+
+.start {
+  visibility: hidden;
 }
 
 #wheel {

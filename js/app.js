@@ -13,6 +13,11 @@ $(document).ready(function() {
   var $player3NameDisplay = $("#player-3-name-display");
   var $submitButton = $("#submit-player-names")
 
+
+
+  var words = ["HelloWorld", "Disambiguation", "General", "Assembly"];
+  var letters;
+
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
     $player1NameDisplay.text(`Name: ${$player1NameText.val()}`)
@@ -20,5 +25,20 @@ $(document).ready(function() {
     $player3NameDisplay.text(`Name: ${$player3NameText.val()}`)
   })
 
+  // Program Pseudocode - Choose a random word
+  // Choose a word from the words away randomly
+  // break down the word into each letter
+  // display each letter as an underscore
+  // Using https://jsfiddle.net/phollott/x29ym2ag/ to guide me through, but I'm trying to convert as much of it as I can to jQuery
+
+  var puzzle = words[Math.floor(Math.random() * words.length)]
+  var letters = puzzle.toUpperCase().split("")
+  letters.forEach(function(letter) {
+      $("#puzzle-wrapper ul").append(
+        `<li><span class="start">${letter}</span></li>`)
+    })
+    // puzzle.charAt(index).forEach(function(letter) {
+    //     $("puzzle-wrapper ul").append(`<li>${letter}</li>")
+    //   })
 
 })
