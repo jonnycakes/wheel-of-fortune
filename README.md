@@ -49,4 +49,6 @@ Please check out my original wireframe [here](https://wireframe.cc/WdWGJI). I ma
 - I have no idea how to integrate the logo right now in my style
 
 ### Inspirations
-- https://codepen.io/cathydutton/pen/ldazc
+- [Hangman game in javascript](https://codepen.io/cathydutton/pen/ldazc)
+- [Another simple hangman game](https://jsfiddle.net/phollott/x29ym2ag/)
+- [Bootstrap modal help]( http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load)
