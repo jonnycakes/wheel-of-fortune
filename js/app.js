@@ -65,5 +65,17 @@ $(document).ready(function() {
       $("#player-1").addClass("player-1-turn")
     }
   }
-  $("#increment").on("click", incrementTurn)
+
+  // Spin the wheel!
+  var spinWheel = function() {
+    $("#wheel").addClass("spin");
+    setTimeout(function() {
+      $("#spinModal").modal("show")
+      $("#wheel").removeClass("spin")
+    }, 2200)
+  }
+
+  $("#wheel").on("click", spinWheel)
+
+  console.log("end")
 })

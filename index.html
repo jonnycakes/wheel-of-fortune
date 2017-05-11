@@ -25,10 +25,9 @@
   <body>
 
   <header>
-    <span id="increment">INCREMENT</span>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
       Player names
-    </button>
+    </button> -->
   </header>
     <div id="wrapper" class="container-fluid" >
       <div class="row">
@@ -41,14 +40,12 @@
 
           <div id="gameplay-wrapper">
               <div id="wheel">
-
               </div>
 
               <div id="inputs">
-                <!-- Button trigger modal -->
 
-                  <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
-                  <button id="submit-text">submit</button>
+
+
               </div>
           </div>
         </main>
@@ -72,7 +69,7 @@
 
 
 
-  <!-- Modal -->
+  <!-- Modal for Player Names -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -92,6 +89,23 @@
     </div>
   </div>
 
+  <!-- Modal for Spin the wheel -->
+  <div class="modal fade" id="spinModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Spin the Wheel!</h4>
+        </div>
+        <div class="modal-body">
+          <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submit-text" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   </body>

@@ -85,6 +85,11 @@ li {
   position: relative;
 }
 
+.spin {
+  transform: rotate(3600deg);
+  transition: all 2.0s ease-in-out;
+}
+
 #inputs {
   flex: 1;
   padding: 5px;
@@ -174,6 +179,12 @@ li {
 
 .player-3-turn {
   border: 10px dotted #3D74E8 !important;
+}
+
+.player-name-display {
+  text-align: center;
+  color: white;
+  font-size: 20px;
 }
 
 /*Modal*/
