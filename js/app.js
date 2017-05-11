@@ -113,7 +113,8 @@ $(document).ready(function() {
   // Pick a letter
 
   $("#submit-text").on("click", function() {
-    if (turn === "player1" && $("#guess-text").val() !== "") {
+    if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
+        $("#guess-text").val(), consonant)) {
       let startScore = player1Score;
       letters.forEach(function(letter, indexNum) {
         if ($("#guess-text").val().toUpperCase() === letter) {
