@@ -27,7 +27,8 @@ $(document).ready(function() {
   var player1Score = 0;
   var player2Score = 0;
   var player3Score = 0;
-  var turn = "player1"
+  // var randoTurn = ["player1", "player2", "player3"]; // I've put this in, but there's styling that goes along with the turn that I've gotta build out a function for.
+  var turn = "player1";
   var amounts = ["300", "400", "500", "600", "800", "900", "1000"]
   var newValue;
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",

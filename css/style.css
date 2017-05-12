@@ -55,15 +55,17 @@ aside {
   border-top: 2px #fff solid;
   border-bottom: 2px #fff solid;
   box-shadow: inset 0 0 10px #aaa;
-  position: relative;
-  top: 150px;
+  position: absolute;
+  width: 95%;
+  top: 230px;
+  margin: 0 auto;
   background-color: #5555ff;
   color: #ffffff;
 }
 
 ul {
   position: relative;
-  top: 90px;
+  top: 50px;
   padding: 10px;
   margin: 0 auto;
   text-align: center;
