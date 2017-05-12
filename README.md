@@ -24,6 +24,7 @@ User stories can be found [here](https://www.pivotaltracker.com/n/projects/20216
 ---
 
 ### Approach taken
+For branching, I'm going to reference [this document about branching models](http://nvie.com/posts/a-successful-git-branching-model/). Master is the branch that should always reflect a *production-ready* state. So, not doing the gh-pages thing.
 
 My overarching theory behind developing this revolved around two concepts: hitting "MVP" (Minimal Viable Product), and "make it work first, make it work well later".
 
@@ -42,7 +43,7 @@ After that, I started building up my framework. I decided to use jQuery and boot
 
 Next is to organize my user stories and start picking them off.
 
-Then, getting stories knocked off one at a time. Getting a puzzle board generated. Then, I went to the turn logic. Then, I added listeners for name input for who's turn it is. Then, I added listeners and updated the board when a letter is input. Then, I went to count the score. Then, I went back to putting limits on the inputs. Then, I went to vowels. Then, I went back to the wheel spin and verified that they only entered consonants. Then, after all the functionally worked, I went back and made ugly verbose code into less ugly functions. 
+Then, getting stories knocked off one at a time. Getting a puzzle board generated. Then, I went to the turn logic. Then, I added listeners for name input for who's turn it is. Then, I added listeners and updated the board when a letter is input. Then, I went to count the score. Then, I went back to putting limits on the inputs. Then, I went to vowels. Then, I went back to the wheel spin and verified that they only entered consonants. Then, after all the functionally worked, I went back and made ugly verbose code into less ugly functions.
 
 ---
 ### Wireframes
