@@ -27,15 +27,17 @@ $(document).ready(function() {
   var player1Score = 0;
   var player2Score = 0;
   var player3Score = 0;
-  // var randoTurn = ["player1", "player2", "player3"]; // I've put this in, but there's styling that goes along with the turn that I've gotta build out a function for.
-  var turn = "player1";
+
+
   var amounts = ["300", "400", "500", "600", "800", "900", "1000"]
   var newValue;
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
     "P", "Q", "R", "S", "T", "V", "X", "Z", "W", "Y"
   ]
   var vowels = ["A", "E", "I", "O", "U"]
-  var specialChar = [" ", "!", ".", ","]
+  var specialChar = [" ", "!", ".", ",", "?"]
+
+
 
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
@@ -46,6 +48,23 @@ $(document).ready(function() {
     $player3NameDisplay.text($player3NameText.val())
     $player3ScoreDisplay.text("0")
   })
+
+
+
+  // Start the turn randomly
+
+  var randoTurn = ["player1", "player2", "player3"];
+  var turn = randoTurn[Math.floor(Math.random() * randoTurn.length)]
+  var setFirstPlayer = function() {
+    if (turn === "player1") {
+      $("#player-1").addClass("player-1-turn")
+    } else if (turn === "player2") {
+      $("#player-2").addClass("player-2-turn")
+    } else {
+      $("#player-3").addClass("player-3-turn")
+    }
+  }
+  setFirstPlayer()
 
   // **************************
   // **************************
@@ -224,6 +243,11 @@ $(document).ready(function() {
           }
         })
         $("#vowel-text").val("")
+      } else {
+        alert(
+          "You either entered a consonant or you're score is less than $250. We're gonna move on now, and you get to deal with an annoying alert window. I don't care about UX, if you're not following the rules of the game, you're gonna suffer through a bit!"
+        )
+        incrementTurn()
       }
 
     }) // function end
