@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   // Call for the bootstrap modal on page load. h/t http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load
   $('#myModal').modal('show')
-  $("#audio").get(1).play() // Audio, Mark gave me this idea.
+  $("#introMusic").get(0).play() // Audio, Mark gave me this idea.
 
   // aliases and init settings!
   var $player1NameText = $("#player-1-name");
