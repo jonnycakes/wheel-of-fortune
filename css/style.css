@@ -135,10 +135,12 @@ li {
 
 #player-1 {
   width: 100%;
-  background-color: #FF3129;
-  border: 15px #f00 solid;
+  background-color: #aaa;
+  border: 15px #f00 hidden;
   height: 150px;
   box-shadow: inset 0 0 30px #555;
+  border-radius: 30px;
+  margin-bottom: 5px;
 }
 
 #player-1-name {
@@ -151,16 +153,19 @@ li {
 
 .player-1-turn {
   /*border-style:  !important;*/
-  border: 15px #FF3129 ridge !important;
-  box-shadow: inset 0 0 100px #eee !important;
+  border: 5px #FF3129 solid !important;
+  box-shadow: inset 0 0 120px #eee !important;
+  background-color: #FF3129 !important;
 }
 
 #player-2 {
   width: 100%;
-  background-color: #E8DC2B;
-  border: 15px #F1EE00 solid;
+  background-color: #aaa;
+  border: 15px #F1EE00 hidden;
   height: 150px;
   box-shadow: inset 0 0 30px #555;
+  border-radius: 30px;
+  margin-bottom: 5px;
 }
 
 #player-2-name {
@@ -172,16 +177,19 @@ li {
 }
 
 .player-2-turn {
-  border: 15px  #E8DC2B ridge !important;
-  box-shadow: inset 0 0 100px #eee !important;
+  border: 5px  #E8DC2B solid !important;
+  box-shadow: inset 0 0 100px #fff !important;
+  background-color: #E8DC2B !important;
 }
 
 #player-3 {
   width: 100%;
-  background-color: #3D74E8;
-  border: 15px #3DBEE8 solid;
+  background-color: #aaa;
+  border: 15px #3DBEE8 hidden;
   height: 150px;
   box-shadow: inset 0 0 30px #555;
+  border-radius: 30px;
+  margin-bottom: 5px;
 }
 
 #player-3-name {
@@ -193,8 +201,9 @@ li {
 }
 
 .player-3-turn {
-  border: 15px #3D74E8 ridge !important;
+  border: 5px #3D74E8 solid !important;
   box-shadow: inset 0 0 100px #eee !important;
+  background-color: #3D74E8 !important;
 }
 
 .player-name-display, .score {

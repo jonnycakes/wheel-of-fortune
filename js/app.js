@@ -121,6 +121,7 @@ $(document).ready(function() {
           player1Score += newValue;
           $player1ScoreDisplay.text(player1Score)
           $(`#indexNum${indexNum}`).removeClass("start")
+            // $(#"#guess-text").val() = ""
         }
       })
       if (startScore === player1Score) {
@@ -133,6 +134,7 @@ $(document).ready(function() {
           player2Score += newValue;
           $player2ScoreDisplay.text(player2Score)
           $(`#indexNum${indexNum}`).removeClass("start")
+
         }
       })
       if (startScore === player2Score) {
