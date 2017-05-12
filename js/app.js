@@ -253,7 +253,19 @@ $(document).ready(function() {
     }) // function end
     // closing brackets are the worst. I spent more time than I should with copy/paste mistakes becuase the closing brackets are hard. I eventaully deleted everything and started over.
 
-
+  $("#submit-solve").on("click", function() {
+    if ($("#solve-text").val().toUpperCase() === puzzle.toUpperCase()) {
+      alert(
+        "Congratulations! You've solved the puzzle! Correctly! Unfortunately, you can't take home your winnings. But, you can brag that you were the winner!"
+      );
+      window.location.reload(true)
+    } else {
+      alert(
+        "Sorry, you didn't get it correct. It was a very nice try, though. I mean it!"
+      );
+      incrementTurn()
+    }
+  })
 
   // restart game!
   // $("header").on("click", function() {
