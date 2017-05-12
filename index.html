@@ -29,14 +29,17 @@
   <body>
 
   <header>
-    <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-      Player names
-    </button> -->
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#instructModal">
+      How to Play
+    </button>
+    <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">
+      Change Names
+    </button>
   </header>
     <div id="wrapper" class="container-fluid" >
 
 
-        <main class="col-xs-8">
+        <main class="col-xs-9">
 
           <div id="puzzle-wrapper">
               <ul></ul>
@@ -61,7 +64,7 @@
           </div>
         </main>
 
-        <aside class="col-xs-4">
+        <aside class="col-xs-3">
           <div class="player" id="player-1">
             <div class="player-name-display" id="player-1-name-display"></div>
             <span class="score">$</span><div class="score" id="player-1-score"></div>
@@ -130,7 +133,7 @@
         </div>
         <div class="modal-body">
           <p>Please enter a vowel. You will be charged $250, even if it doesn't match.</p>
-          <p>If you're score is currently less than $250, or if you're not going to choose a vowel, we're just gonna skip you.
+          <p>If you're score is currently less than $250, or if you're not going to choose a vowel, we're just gonna skip you.</p>
           <h4>Enter Your Guess:</h4>
           <input id="vowel-text" type="text" name="text" maxlength="1" />
         </div>
@@ -159,6 +162,33 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal for Instructions -->
+  <div class="modal fade" id="instructModal" tabindex="-1" role="dialog" aria-labelledby="instructModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">How to Play</h4>
+        </div>
+        <div class="modal-body">
+          <h3>Thanks for playing Wheel!</h3>
+          <img src="/assets/logo.jpeg" width="100px" />
+          <p>To get started, just enter the player names. We'll randomly select who goes first.</p>
+          <p>Just like Wheel of Fortune, to guess a consonant, simply click the wheel to spin. Then, type that letter into the text field. You'll get points for how many letters have been revealed. If none have been, then your turn will end.</p>
+          <p>If you have more than $250, you can buy a vowel for the low low price of $250! Even if you turn around multiple vowels, it'll only cost ya $250! These are round 1 rules!</p>
+          <p>Once you've revealed the board, you can try and solve the puzzle. Type in the full puzzle, puncuation and spaces included.</p>
+          <p>And, just be glad my game's not as complicated as this one!</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/wQbnRA9wFnw" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="submit-vowel" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   </body>
 </html>

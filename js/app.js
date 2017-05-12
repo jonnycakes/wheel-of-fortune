@@ -267,10 +267,6 @@ $(document).ready(function() {
     }
   })
 
-  // restart game!
-  // $("header").on("click", function() {
-  //   window.location.reload(true)
-  // })
 
   console.log("End"); // Left here for santiy checks for the 100 times I broke something during this. I actually removed this for a hot-second and it slowed me down in de-bugging
 })
