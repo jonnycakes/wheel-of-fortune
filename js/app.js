@@ -245,17 +245,8 @@ $(document).ready(function() {
 
   var vowelCheck = function(playerXScore, $playerXScoreDisplay) {
     playerXScore -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
-    if ($.inArray($("#vowel-text").val().toUpperCase(), letters) < 0) {
-      incrementTurn()
-      return;
-    } // Placed here because we still charge the 250, but we need to move the turn and not invoke the rest of this function
-    $playerXScoreDisplay.text(playerXScore) // properlly display the new score
-    letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
-      if ($("#vowel-text").val().toUpperCase() === letter) {
-        $(`#indexNum${indexNum}`).removeClass("start");
-      }
-    })
-    $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
+
+    // update player score correctly hack
     if (turn === "player1") {
       player1Score = playerXScore;
     } else
@@ -265,6 +256,20 @@ $(document).ready(function() {
     if (turn === "player3") {
       player3Score = playerXScore;
     }
+
+    // Placed here because we still charge the 250, but we need to move the turn and not invoke the rest of this function
+    if ($.inArray($("#vowel-text").val().toUpperCase(), letters) < 0) {
+      incrementTurn()
+      return;
+    }
+    $playerXScoreDisplay.text(playerXScore) // properlly display the new score
+    letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
+      if ($("#vowel-text").val().toUpperCase() === letter) {
+        $(`#indexNum${indexNum}`).removeClass("start");
+      }
+    })
+    $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
+
   }
 
   // Listener
