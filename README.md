@@ -24,7 +24,7 @@ User stories can be found [here](https://www.pivotaltracker.com/n/projects/20216
 ---
 
 ### Approach taken
-For branching, I'm going to reference [this document about branching models](http://nvie.com/posts/a-successful-git-branching-model/). Master is the branch that should always reflect a *production-ready* state. So, not doing the gh-pages thing.
+For branching, I'm going to reference [this document about branching models](http://nvie.com/posts/a-successful-git-branching-model/). Master is the branch that should always reflect a *production-ready* state. So, not doing the :gh-pages thing.
 
 My overarching theory behind developing this revolved around two concepts: hitting "MVP" (Minimal Viable Product), and "make it work first, make it work well later".
 
@@ -57,7 +57,6 @@ To see instructions for the game, please load the game and click "How to Play" o
 ---
 ### Unsolved problems
 As of Friday, there's a few post MVP stories and bugs still to tackle. In no particular order, they are:
-- Score doesn't subtract when a vowel is chosen that is not on the board.
 - I am not yet validating if a letter has already been chosen. So, a player can theoretically gain points for letters that have already been chosen.
   - To resolve, I'm thinking of creating a new array of used characters. If the character enter matches a character in that used array, the turn will increment to the next player.
 - The puzzle board will wrap letters if the board becomes smaller. For long puzzles, this means a weird type of hyphenation happens.

@@ -163,7 +163,7 @@ $(document).ready(function() {
   // **************************
 
   // Pick a letter
-  // REFACTORED!!!!!!! Check my comments on the earlier commits. But, I pulled out the logic into a new function called consonantCheck. My biggest pain points were a) keeping track of close brackets, and b) names that include dollar signs. But, it's a whole lot more clearner now!
+  // REFACTORED!!!!!!! Check my comments on the earlier commits. But, I pulled out the logic into a new function called consonantCheck. My biggest pain points were a) keeping track of close brackets, and b) names that include dollar signs. But, it's a whole lot more clearner now! (It may not seem like it with the verbose comments, but whatevas)
   var consonantCheck = function(playerXScore, $playerXScoreDisplay) {
     let startScore = playerXScore; // Set what the score is before iterating, to see if it goes up later
     letters.forEach(function(letter, indexNum) {
@@ -213,7 +213,7 @@ $(document).ready(function() {
     }
   })
 
-  // Now I can add in a keyPress listener because the text is easy peasy!
+  // Now I can add in a keyPress listener because the text is easy peasy now that I've got the function!
 
   $("#guess-text").on("keypress", function(key) {
     if (key.which === 13 && turn === "player1" && $("#guess-text").val() !==
@@ -246,6 +246,7 @@ $(document).ready(function() {
   // Buy a Vowel
 
   var vowelCheck = function(playerXScore, $playerXScoreDisplay) {
+
     playerXScore -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
     $playerXScoreDisplay.text(playerXScore) // properlly display the new score
 
