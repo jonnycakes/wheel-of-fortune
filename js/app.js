@@ -17,8 +17,10 @@ $(document).ready(function() {
   var $submitButton = $("#submit-player-names")
 
   // Userful Variables
-  var words = ["HelloWorld", "Disambiguation", "General", "Assembly",
-    "taco", "javascript", "jquery", "spellchecker"
+  var words = ["Hello World", "Disambiguation", "General Assembly",
+    "taco", "JS is short for javascript", "jquery", "spell checker",
+    "css", "html",
+    "concatenation", ""
   ];
   var letters;
   var player1Score = 0;
@@ -31,6 +33,7 @@ $(document).ready(function() {
     "P", "Q", "R", "S", "T", "V", "X", "Z", "W", "Y"
   ]
   var vowels = ["A", "E", "I", "O", "U"]
+  var specialChar = [" ", "!", ".", ","]
 
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
@@ -55,9 +58,16 @@ $(document).ready(function() {
   var puzzle = words[Math.floor(Math.random() * words.length)]
   var letters = puzzle.toUpperCase().split("")
   letters.forEach(function(letter, indexNum) { // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
-    $("#puzzle-wrapper ul").append(
-      `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>` // Thank got that we can do this in template literals. Made the id of each LI different for each, so we can identify later. Made the ID longer than just a number to be more descriptive, and I think it's in the AirBNB style guide that we shouldn't use only numbers for id'ing elements.
-    )
+    if ($.inArray(letter, specialChar) > -1) {
+      $("#puzzle-wrapper ul").append(
+        `<li class="special-char"><span id="indexNum${indexNum}">${letter} &nbsp; </span></li>`
+      )
+    } else {
+      $("#puzzle-wrapper ul").append(
+          `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>`
+        ) // Thank got that we can do this in template literals. Made the id of each LI different for each, so we can identify later. Made the ID longer than just a number to be more descriptive, and I think it's in the AirBNB style guide that we shouldn't use only numbers for id'ing elements.
+
+    }
   })
 
   // **************************
@@ -131,7 +141,8 @@ $(document).ready(function() {
       if (startScore === player1Score) {
         incrementTurn() // if the score stays the same, then it's the next players turn.
       }
-    } else if (turn === "player2" && $("#guess-text").val() !== "" && $
+    } else if (turn === "player2" && $("#guess-text").val() !== "" &&
+      $
       .inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) {
       let startScore = player2Score;
@@ -146,7 +157,8 @@ $(document).ready(function() {
       if (startScore === player2Score) {
         incrementTurn()
       }
-    } else if (turn === "player3" && $("#guess-text").val() !== "" && $
+    } else if (turn === "player3" && $("#guess-text").val() !== "" &&
+      $
       .inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) {
 
@@ -166,6 +178,7 @@ $(document).ready(function() {
       alert(
         "You picked a character that's not a consonant. Now, since you're choice is just that annoying, I'm gonna annoy you with an alert window. Yea, I could'a gone with the modal, but that wouldn't be half as annoying as you just were. Also, you lost your turn. Those are the actual rules."
       )
+      $("#guess-text").val(""); // Clear input field
       incrementTurn()
     }
   })
@@ -173,6 +186,8 @@ $(document).ready(function() {
   // **************************
   // **************************
   // **************************
+
+  // Buy a Vowel
 
   $("#submit-vowel").on("click", function() {
       if (turn === "player1" && player1Score > 250 && $
