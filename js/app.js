@@ -245,6 +245,7 @@ $(document).ready(function() {
 
   var vowelCheck = function(playerXScore, $playerXScoreDisplay) {
     playerXScore -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
+    $playerXScoreDisplay.text(playerXScore) // properlly display the new score
 
     // update player score correctly hack
     if (turn === "player1") {
@@ -262,7 +263,7 @@ $(document).ready(function() {
       incrementTurn()
       return;
     }
-    $playerXScoreDisplay.text(playerXScore) // properlly display the new score
+
     letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
       if ($("#vowel-text").val().toUpperCase() === letter) {
         $(`#indexNum${indexNum}`).removeClass("start");
