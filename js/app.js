@@ -4,17 +4,26 @@ $(document).ready(function() {
   // Call for the bootstrap modal on page load. h/t http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load
   $('#myModal').modal('show')
 
-  // aliases!
+  // aliases and init settings!
   var $player1NameText = $("#player-1-name");
   var $player1NameDisplay = $("#player-1-name-display");
   var $player1ScoreDisplay = $("#player-1-score")
+  var player1Score = 0;
+  $player1ScoreDisplay.text("0")
   var $player2NameText = $("#player-2-name");
   var $player2NameDisplay = $("#player-2-name-display");
   var $player2ScoreDisplay = $("#player-2-score")
+  var player2Score = 0;
+  $player2ScoreDisplay.text("0")
   var $player3NameText = $("#player-3-name");
   var $player3NameDisplay = $("#player-3-name-display");
   var $player3ScoreDisplay = $("#player-3-score")
+  var player3Score = 0;
+  $player3ScoreDisplay.text("0")
+
   var $submitButton = $("#submit-player-names")
+
+
 
   // Userful Variables
   var words = ["Hello World", "Disambiguation", "General Assembly",
@@ -24,9 +33,7 @@ $(document).ready(function() {
     "Check your spelling", "palmarius"
   ];
   var letters;
-  var player1Score = 0;
-  var player2Score = 0;
-  var player3Score = 0;
+
 
 
   var amounts = [
@@ -44,15 +51,19 @@ $(document).ready(function() {
   var specialChar = [" ", "!", ".", ",", "?"]
 
 
-
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
     $player1NameDisplay.text($player1NameText.val())
-    $player1ScoreDisplay.text("0")
     $player2NameDisplay.text($player2NameText.val())
-    $player2ScoreDisplay.text("0")
     $player3NameDisplay.text($player3NameText.val())
-    $player3ScoreDisplay.text("0")
+  })
+  $(".player-name").on("keypress", function(key) {
+    if (key.which === 13) {
+      $player1NameDisplay.text($player1NameText.val())
+      $player2NameDisplay.text($player2NameText.val())
+      $player3NameDisplay.text($player3NameText.val())
+      $('#myModal').modal('hide')
+    }
   })
 
 
@@ -159,13 +170,13 @@ $(document).ready(function() {
         $playerXScoreDisplay.text(playerXScore)
         $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
         if (turn === "player1") {
-          player1Score = playerXScore
+          player1Score = playerXScore;
         } else
         if (turn === "player2") {
-          player2Score = playerXScore
+          player2Score = playerXScore;
         } else
         if (turn === "player3") {
-          player3Score = playerXScore
+          player3Score = playerXScore;
         }
       }
     })
@@ -173,9 +184,9 @@ $(document).ready(function() {
     if (startScore === playerXScore) {
       incrementTurn() // if the score stays the same, then it's the next players turn.
     }
-    return playerXScore
   }
 
+  // Listener for consonant submission
   $("#submit-text").on("click", function() {
     if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
@@ -232,44 +243,42 @@ $(document).ready(function() {
 
   // Buy a Vowel
 
+  var vowelCheck = function(playerXScore, $playerXScoreDisplay) {
+    playerXScore -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
+    if ($.inArray($("#vowel-text").val().toUpperCase(), letters) < 0) {
+      incrementTurn()
+      return;
+    } // Placed here because we still charge the 250, but we need to move the turn and not invoke the rest of this function
+    $playerXScoreDisplay.text(playerXScore) // properlly display the new score
+    letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
+      if ($("#vowel-text").val().toUpperCase() === letter) {
+        $(`#indexNum${indexNum}`).removeClass("start");
+      }
+    })
+    $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
+    if (turn === "player1") {
+      player1Score = playerXScore;
+    } else
+    if (turn === "player2") {
+      player2Score = playerXScore;
+    } else
+    if (turn === "player3") {
+      player3Score = playerXScore;
+    }
+  }
 
-  // Again, this piece is a three piece if else, one section for the player. Can also do with a refactor.
+  // Listener
   $("#submit-vowel").on("click", function() {
       if (turn === "player1" && player1Score > 250 && $
         .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) { // If player-1 has turn AND player's score is more than 250 AND the data entered is a vowel.
-        player1Score -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
-        $player1ScoreDisplay.text(player1Score) // properlly display the new score
-        letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
-          if ($("#vowel-text").val().toUpperCase() === letter) {
-            $(`#indexNum${indexNum}`).removeClass("start");
-          }
-        })
-        $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
+        vowelCheck(player1Score, $player1ScoreDisplay)
       } else if (turn === "player2" && player2Score > 250 && $
         .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
-        player2Score -= 250;
-        $player2ScoreDisplay.text(player2Score)
-        letters.forEach(function(letter, indexNum) {
-          if ($("#vowel-text").val().toUpperCase() === letter) {
-            $(`#indexNum${indexNum}`).removeClass("start");
-          }
-        })
-        $("#vowel-text").val("")
+        vowelCheck(player2Score, $player2ScoreDisplay)
       } else if (turn === "player3" && player3Score > 250 && $
         .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
-        console.log(turn)
-        console.log(player3Score)
-        player3Score -= 250;
-        $player3ScoreDisplay.text(player3Score)
-        letters.forEach(function(letter, indexNum) {
-          if ($("#vowel-text").val().toUpperCase() === letter) {
-            $(`#indexNum${indexNum}`).removeClass("start");
-          }
-        })
-        $("#vowel-text").val("")
+        vowelCheck(player3Score, $player3ScoreDisplay)
       } else {
-        console.log(turn)
-        console.log(player3Score)
         alert(
           "You either entered a consonant or you're score is less than $250. We're gonna move on now, and you get to deal with an annoying alert window. I don't care about UX, if you're not following the rules of the game, you're gonna suffer through a bit!"
         )
@@ -280,10 +289,17 @@ $(document).ready(function() {
     }) // function end
     // closing brackets are the worst. I spent more time than I should with copy/paste mistakes becuase the closing brackets are hard. I eventaully deleted everything and started over.
 
+
+  // **************************
+  // **************************
+  // **************************
+
+  // Solve the Puzzle!
+
   $("#submit-solve").on("click", function() {
     if ($("#solve-text").val().toUpperCase() === puzzle.toUpperCase()) {
       alert(
-        "Congratulations! You've solved the puzzle! Correctly! Unfortunately, you can't take home your winnings. But, you can brag that you were the winner!"
+        "Congratulations! You've solved the puzzle! Correctly! Unfortunately, you can't take home your winnings. But, you can brag that you were the winner!. Now, lets all play again!"
       );
       window.location.reload(true)
     } else {
