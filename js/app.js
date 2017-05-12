@@ -158,12 +158,22 @@ $(document).ready(function() {
         playerXScore += newValue;
         $playerXScoreDisplay.text(playerXScore)
         $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
+        if (turn === "player1") {
+          player1Score = playerXScore
+        } else
+        if (turn === "player2") {
+          player2Score = playerXScore
+        } else
+        if (turn === "player3") {
+          player3Score = playerXScore
+        }
       }
     })
     $("#guess-text").val(""); // Clear input field
-    if (startScore === player1Score) {
+    if (startScore === playerXScore) {
       incrementTurn() // if the score stays the same, then it's the next players turn.
     }
+    return playerXScore
   }
 
   $("#submit-text").on("click", function() {
@@ -189,6 +199,32 @@ $(document).ready(function() {
       incrementTurn()
     }
   })
+
+  // Now I can add in a keyPress listener because the text is easy peasy!
+
+  $("#guess-text").on("keypress", function(key) {
+    if (key.which === 13 && turn === "player1" && $("#guess-text").val() !==
+      "" && $.inArray(
+        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+      consonantCheck(player1Score, $player1ScoreDisplay),
+        $('#spinModal').modal('hide')
+    } else if (key.which === 13 && turn === "player2" && $(
+        "#guess-text").val() !== "" &&
+      $
+      .inArray(
+        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+      consonantCheck(player2Score, $player2ScoreDisplay)
+      $('#spinModal').modal('hide')
+    } else if (key.which === 13 && turn === "player3" && $(
+        "#guess-text").val() !== "" &&
+      $
+      .inArray(
+        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+      consonantCheck(player3Score, $player3ScoreDisplay)
+      $('#spinModal').modal('hide')
+    }
+  })
+
 
   // **************************
   // **************************
@@ -221,6 +257,8 @@ $(document).ready(function() {
         $("#vowel-text").val("")
       } else if (turn === "player3" && player3Score > 250 && $
         .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        console.log(turn)
+        console.log(player3Score)
         player3Score -= 250;
         $player3ScoreDisplay.text(player3Score)
         letters.forEach(function(letter, indexNum) {
@@ -230,9 +268,12 @@ $(document).ready(function() {
         })
         $("#vowel-text").val("")
       } else {
+        console.log(turn)
+        console.log(player3Score)
         alert(
           "You either entered a consonant or you're score is less than $250. We're gonna move on now, and you get to deal with an annoying alert window. I don't care about UX, if you're not following the rules of the game, you're gonna suffer through a bit!"
         )
+        $("#vowel-text").val("")
         incrementTurn()
       }
 
