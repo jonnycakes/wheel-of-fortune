@@ -7,7 +7,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  box-shadow: 0 0 10px #bbb;
+  /*box-shadow: 0 0 10px #bbb;*/
   margin-bottom: 10px;
   text-align: right;
   line-height: 100px;
@@ -42,7 +42,7 @@ aside {
   border-bottom: 2px #fff solid;
   box-shadow: inset 0 0 10px #aaa;
   position: absolute;
-  width: 95%;
+  width: 95.75%;
   top: 260px;
   margin: 0 auto;
   background-color: #5555ff;
@@ -128,60 +128,58 @@ li {
 /* Player Podiums */
 
 .player {
-  border-radius: 30px;
+  border-radius: 1px;
   margin-bottom: 15px;
   height: 160px;
   width: 100%;
   text-align: center;
-  color: white;
   font-size: 30px;
-  line-height: 65px;
+  line-height: 80px;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 .player-name-display {
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .score {
-  font-family: 'Space Mono', monospace;
+  font-family: 'Open Sans', monospace;
   display: inline;
 }
 
 #player-1 {
   background-color: #aaa;
-  border: 15px #f00 hidden;
   box-shadow: inset 0 0 30px #555;
 
 }
 
 .player-1-turn {
-  border: 5px #FF3129 solid !important;
-  box-shadow: inset 0 0 120px #eee !important;
-  background-color: #FF3129 !important;
+  box-shadow: inset 0 0 5px #c0392b !important;
+  background-color: #e74c3c !important;
+  color: #c0392b;
 }
 
 #player-2 {
   background-color: #aaa;
-  border: 15px #F1EE00 hidden;
   box-shadow: inset 0 0 30px #555;
 }
 
 .player-2-turn {
-  border: 5px  #E8DC2B solid !important;
-  box-shadow: inset 0 0 100px #fff !important;
-  background-color: #E8DC2B !important;
+  box-shadow: inset 0 0 5px #f39c12 !important;
+  background-color: #f1c40f !important;
+  color: #f39c12;
 }
 
 #player-3 {
   background-color: #aaa;
-  border: 15px #3DBEE8 hidden;
   box-shadow: inset 0 0 30px #555;
 }
 
 .player-3-turn {
-  border: 5px #3D74E8 solid !important;
-  box-shadow: inset 0 0 100px #eee !important;
-  background-color: #3D74E8 !important;
+  box-shadow: inset 0 0 5 #1B618A !important;
+  background-color: #2DA6E8 !important;
+  color: #1B618A;
 }
 
 /*Modal*/
