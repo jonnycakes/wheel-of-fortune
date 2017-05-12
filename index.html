@@ -8,6 +8,10 @@
     <!-- Control layout on mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Fonts -->
+    <link rel="stylesheet" href="/vendor/fonts/glyphicons-halflings-regular.ttf">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono|Work+Sans" rel="stylesheet">
+
     <!-- Style sheets -->
     <link rel="stylesheet" href="/vendor/css/reset.css" />
     <link rel="stylesheet" href="/vendor/css/normalize.css" />
@@ -44,7 +48,13 @@
               </div>
 
               <div id="inputs">
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#vowelModal">
+                  <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Buy a Vowel
+                </button>
 
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#solveModal">
+                  Solve the Puzzle
+                </button>
 
 
               </div>
@@ -106,7 +116,7 @@
           <button type="button" class="btn btn-primary" id="submit-text" data-dismiss="modal">Submit</button>
         </div>
       </div>
-    
+
   </div>
 
 

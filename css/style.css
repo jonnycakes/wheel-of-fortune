@@ -57,13 +57,6 @@ aside {
   color: #ffffff;
 }
 
-/* Gameplay Section */
-
-#gameplay-wrapper {
-  display:flex;
-  text-align: center;
-}
-
 ul {
   position: relative;
   top: 90px;
@@ -78,13 +71,23 @@ li {
   font-size: 40px;
   width: 40px;
   background-color: #FFF;
-  font-display:
+  font-family: 'Work Sans', sans-serif;
   text-align: center;
 }
 
 
 .start {
   visibility: hidden;
+}
+
+/* Gameplay Section */
+
+#gameplay-wrapper {
+  display:flex;
+  text-align: center;
+  border: 1px #aaa solid;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 #wheel {
@@ -105,8 +108,13 @@ li {
 #inputs {
   flex: 1;
   padding: 5px;
-  min-width: 300px;
+  min-width: 200px;
+  display: block;
+}
 
+#inputs .btn {
+  width: 200px;
+  margin: 20px;
 }
 
 #guess-text {
@@ -122,7 +130,22 @@ li {
 /* Player Podiums */
 
 .player {
+  border-radius: 30px;
+  margin-bottom: 15px;
+  height: 150px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  line-height: 65px;
+}
 
+.player-name-display {
+  font-family: 'Work Sans', sans-serif;
+}
+
+.score {
+  font-family: 'Space Mono', monospace;
 }
 
 .player-name-display {
@@ -134,13 +157,10 @@ li {
 }
 
 #player-1 {
-  width: 100%;
   background-color: #aaa;
   border: 15px #f00 hidden;
-  height: 150px;
   box-shadow: inset 0 0 30px #555;
-  border-radius: 30px;
-  margin-bottom: 5px;
+
 }
 
 #player-1-name {
@@ -152,20 +172,15 @@ li {
 }
 
 .player-1-turn {
-  /*border-style:  !important;*/
   border: 5px #FF3129 solid !important;
   box-shadow: inset 0 0 120px #eee !important;
   background-color: #FF3129 !important;
 }
 
 #player-2 {
-  width: 100%;
   background-color: #aaa;
   border: 15px #F1EE00 hidden;
-  height: 150px;
   box-shadow: inset 0 0 30px #555;
-  border-radius: 30px;
-  margin-bottom: 5px;
 }
 
 #player-2-name {
@@ -183,13 +198,9 @@ li {
 }
 
 #player-3 {
-  width: 100%;
   background-color: #aaa;
   border: 15px #3DBEE8 hidden;
-  height: 150px;
   box-shadow: inset 0 0 30px #555;
-  border-radius: 30px;
-  margin-bottom: 5px;
 }
 
 #player-3-name {
@@ -206,13 +217,7 @@ li {
   background-color: #3D74E8 !important;
 }
 
-.player-name-display, .score {
-  text-align: center;
-  color: white;
-  font-size: 30px;
-  font-family: sans-serif;
-  line-height: 60px;
-}
+
 
 /*Modal*/
 .player-name {
