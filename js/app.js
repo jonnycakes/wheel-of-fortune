@@ -150,57 +150,37 @@ $(document).ready(function() {
   // **************************
 
   // Pick a letter
-  // Because of the way I designed the turn counter, we have to do this three times. One for each player. If it's player 1's turn, we edit the score for player one. Else if player 2, else if player 3. This could use a refactor, but I wanted it to work first, then go back and make it work well afterwards.
-  // Put comments on the first set. But, I'm commenting after I got everything to work, so forgiveness that you don't see the same mess of comments on the second two sets.
+  // REFACTORED!!!!!!! Check my comments on the earlier commits. But, I pulled out the logic into a new function called consonantCheck. My biggest pain points were a) keeping track of close brackets, and b) names that include dollar signs. But, it's a whole lot more clearner now!
+  var consonantCheck = function(playerXScore, $playerXScoreDisplay) {
+    let startScore = playerXScore; // Set what the score is before iterating, to see if it goes up later
+    letters.forEach(function(letter, indexNum) {
+      if ($("#guess-text").val().toUpperCase() === letter) {
+        playerXScore += newValue;
+        $playerXScoreDisplay.text(playerXScore)
+        $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
+      }
+    })
+    $("#guess-text").val(""); // Clear input field
+    if (startScore === player1Score) {
+      incrementTurn() // if the score stays the same, then it's the next players turn.
+    }
+  }
 
   $("#submit-text").on("click", function() {
     if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
-      let startScore = player1Score; // Set what the score is before iterating, to see if it goes up later
-      letters.forEach(function(letter, indexNum) {
-        if ($("#guess-text").val().toUpperCase() === letter) {
-          player1Score += newValue;
-          $player1ScoreDisplay.text(player1Score)
-          $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
-        }
-      })
-      $("#guess-text").val(""); // Clear input field
-      if (startScore === player1Score) {
-        incrementTurn() // if the score stays the same, then it's the next players turn.
-      }
+      consonantCheck(player1Score, $player1ScoreDisplay)
     } else if (turn === "player2" && $("#guess-text").val() !== "" &&
       $
       .inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) {
-      let startScore = player2Score;
-      letters.forEach(function(letter, indexNum) {
-        if ($("#guess-text").val().toUpperCase() === letter) {
-          player2Score += newValue;
-          $player2ScoreDisplay.text(player2Score)
-          $(`#indexNum${indexNum}`).removeClass("start")
-        }
-      })
-      $("#guess-text").val(""); // Clear input field
-      if (startScore === player2Score) {
-        incrementTurn()
-      }
+      consonantCheck(player2Score, $player2ScoreDisplay)
+
     } else if (turn === "player3" && $("#guess-text").val() !== "" &&
       $
       .inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) {
-
-      let startScore = player3Score;
-      letters.forEach(function(letter, indexNum) {
-        if ($("#guess-text").val().toUpperCase() === letter) {
-          player3Score += newValue;
-          $player3ScoreDisplay.text(player3Score)
-          $(`#indexNum${indexNum}`).removeClass("start")
-        }
-      })
-      $("#guess-text").val(""); // Clear input field
-      if (startScore === player3Score) {
-        incrementTurn()
-      }
+      consonantCheck(player3Score, $player3ScoreDisplay)
     } else { // The only way you can meet this last condition is if you messed up the input. And, for that, I award you no points, and may God have mercy on your soul.
       alert(
         "You picked a character that's not a consonant. Now, since you're choice is just that annoying, I'm gonna annoy you with an alert window. Yea, I could'a gone with the modal, but that wouldn't be half as annoying as you just were. Also, you lost your turn. Those are the actual rules."
