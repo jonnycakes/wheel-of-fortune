@@ -21,7 +21,7 @@ $(document).ready(function() {
     "taco", "JS is short for javascript", "jquery",
     "css", "CASCADING STYLE SHEETS", "html",
     "concatenation", "AUTOMAGICALLY",
-    "Did you check your spelling, John?"
+    "Check your spelling", "palmarius"
   ];
   var letters;
   var player1Score = 0;

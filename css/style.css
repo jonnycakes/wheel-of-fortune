@@ -32,7 +32,7 @@ aside {
 
 #puzzle-wrapper {
   background-color: #9CFFA8;
-  height: 275px;
+  height: 300px;
   box-shadow: inset 0 0 100px #555;
 }
 
@@ -43,7 +43,7 @@ aside {
   box-shadow: inset 0 0 10px #aaa;
   position: absolute;
   width: 95%;
-  top: 230px;
+  top: 260px;
   margin: 0 auto;
   background-color: #5555ff;
   color: #ffffff;
