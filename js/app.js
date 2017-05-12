@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  console.log("Hello");
+  console.log("Hello"); // Left here for santiy checks for the 100 times I broke something during this.
 
   // Call for the bootstrap modal on page load. h/t http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load
   $('#myModal').modal('show')
@@ -18,9 +18,10 @@ $(document).ready(function() {
 
   // Userful Variables
   var words = ["Hello World", "Disambiguation", "General Assembly",
-    "taco", "JS is short for javascript", "jquery", "spell checker",
-    "css", "html",
-    "concatenation", ""
+    "taco", "JS is short for javascript", "jquery",
+    "css", "CASCADING STYLE SHEETS", "html",
+    "concatenation", "AUTOMAGICALLY",
+    "Did you check your spelling, John?"
   ];
   var letters;
   var player1Score = 0;
@@ -56,13 +57,13 @@ $(document).ready(function() {
   // Using https://jsfiddle.net/phollott/x29ym2ag/ as inspitation here, for logic, but styling and how we "split" the puzzle into letters is much different for me.
 
   var puzzle = words[Math.floor(Math.random() * words.length)]
-  var letters = puzzle.toUpperCase().split("")
-  letters.forEach(function(letter, indexNum) { // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
-    if ($.inArray(letter, specialChar) > -1) {
+  var letters = puzzle.toUpperCase().split("") // breaks puzzle down by letter.
+  letters.forEach(function(letter, indexNum) { // index number is passed along in the forEach loop so we can identify the LI that needs to be revealed.
+    if ($.inArray(letter, specialChar) > -1) { // this first condition will append a green box instead of a white box when there's a space or puncuation. This condition was a refactor in order to allow for multiple words
       $("#puzzle-wrapper ul").append(
         `<li class="special-char"><span id="indexNum${indexNum}">${letter} &nbsp; </span></li>`
       )
-    } else {
+    } else { // the else was the original. This will append a LI with identifying information that includes the letter.
       $("#puzzle-wrapper ul").append(
           `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>`
         ) // Thank got that we can do this in template literals. Made the id of each LI different for each, so we can identify later. Made the ID longer than just a number to be more descriptive, and I think it's in the AirBNB style guide that we shouldn't use only numbers for id'ing elements.
@@ -189,17 +190,19 @@ $(document).ready(function() {
 
   // Buy a Vowel
 
+
+  // Again, this piece is a three piece if else, one section for the player. Can also do with a refactor.
   $("#submit-vowel").on("click", function() {
       if (turn === "player1" && player1Score > 250 && $
-        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
-        player1Score -= 250;
-        $player1ScoreDisplay.text(player1Score)
-        letters.forEach(function(letter, indexNum) {
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) { // If player-1 has turn AND player's score is more than 250 AND the data entered is a vowel.
+        player1Score -= 250; // Subtract 250 from the score. It's here cause it's a flat 250, no matter how many matches (0 - infinity)
+        $player1ScoreDisplay.text(player1Score) // properlly display the new score
+        letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
           if ($("#vowel-text").val().toUpperCase() === letter) {
             $(`#indexNum${indexNum}`).removeClass("start");
           }
         })
-        $("#vowel-text").val("")
+        $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
       } else if (turn === "player2" && player2Score > 250 && $
         .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
         player2Score -= 250;
@@ -231,4 +234,6 @@ $(document).ready(function() {
   // $("header").on("click", function() {
   //   window.location.reload(true)
   // })
+
+  console.log("End"); // Left here for santiy checks for the 100 times I broke something during this. I actually removed this for a hot-second and it slowed me down in de-bugging
 })
