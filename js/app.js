@@ -17,7 +17,9 @@ $(document).ready(function() {
   var $submitButton = $("#submit-player-names")
 
   // Userful Variables
-  var words = ["HelloWorld", "Disambiguation", "General", "Assembly"];
+  var words = ["HelloWorld", "Disambiguation", "General", "Assembly",
+    "taco", "javascript", "jquery", "spellchecker"
+  ];
   var letters;
   var player1Score = 0;
   var player2Score = 0;
@@ -52,9 +54,9 @@ $(document).ready(function() {
 
   var puzzle = words[Math.floor(Math.random() * words.length)]
   var letters = puzzle.toUpperCase().split("")
-  letters.forEach(function(letter, indexNum) {
+  letters.forEach(function(letter, indexNum) { // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
     $("#puzzle-wrapper ul").append(
-      `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>`
+      `<li><span id="indexNum${indexNum}" class="start">${letter}</span></li>` // Thank got that we can do this in template literals. Made the id of each LI different for each, so we can identify later. Made the ID longer than just a number to be more descriptive, and I think it's in the AirBNB style guide that we shouldn't use only numbers for id'ing elements.
     )
   })
 
@@ -111,36 +113,43 @@ $(document).ready(function() {
   // **************************
 
   // Pick a letter
+  // Because of the way I designed the turn counter, we have to do this three times. One for each player. If it's player 1's turn, we edit the score for player one. Else if player 2, else if player 3. This could use a refactor, but I wanted it to work first, then go back and make it work well afterwards.
+  // Put comments on the first set. But, I'm commenting after I got everything to work, so forgiveness that you don't see the same mess of comments on the second two sets.
 
   $("#submit-text").on("click", function() {
     if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
-        $("#guess-text").val(), consonant)) {
-      let startScore = player1Score;
+        $("#guess-text").val().toUpperCase(), consonant) > -1) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
+      let startScore = player1Score; // Set what the score is before iterating, to see if it goes up later
       letters.forEach(function(letter, indexNum) {
         if ($("#guess-text").val().toUpperCase() === letter) {
           player1Score += newValue;
           $player1ScoreDisplay.text(player1Score)
-          $(`#indexNum${indexNum}`).removeClass("start")
-            // $(#"#guess-text").val() = ""
+          $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
         }
       })
+      $("#guess-text").val(""); // Clear input field
       if (startScore === player1Score) {
-        incrementTurn()
+        incrementTurn() // if the score stays the same, then it's the next players turn.
       }
-    } else if (turn === "player2" && $("#guess-text").val() !== "") {
+    } else if (turn === "player2" && $("#guess-text").val() !== "" && $
+      .inArray(
+        $("#guess-text").val().toUpperCase(), consonant) > -1) {
       let startScore = player2Score;
       letters.forEach(function(letter, indexNum) {
         if ($("#guess-text").val().toUpperCase() === letter) {
           player2Score += newValue;
           $player2ScoreDisplay.text(player2Score)
           $(`#indexNum${indexNum}`).removeClass("start")
-
         }
       })
+      $("#guess-text").val(""); // Clear input field
       if (startScore === player2Score) {
         incrementTurn()
       }
-    } else {
+    } else if (turn === "player3" && $("#guess-text").val() !== "" && $
+      .inArray(
+        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+
       let startScore = player3Score;
       letters.forEach(function(letter, indexNum) {
         if ($("#guess-text").val().toUpperCase() === letter) {
@@ -149,9 +158,62 @@ $(document).ready(function() {
           $(`#indexNum${indexNum}`).removeClass("start")
         }
       })
+      $("#guess-text").val(""); // Clear input field
       if (startScore === player3Score) {
         incrementTurn()
       }
+    } else { // The only way you can meet this last condition is if you messed up the input. And, for that, I award you no points, and may God have mercy on your soul.
+      alert(
+        "You picked a character that's not a consonant. Now, since you're choice is just that annoying, I'm gonna annoy you with an alert window. Yea, I could'a gone with the modal, but that wouldn't be half as annoying as you just were. Also, you lost your turn. Those are the actual rules."
+      )
+      incrementTurn()
     }
   })
+
+  // **************************
+  // **************************
+  // **************************
+
+  $("#submit-vowel").on("click", function() {
+      if (turn === "player1" && player1Score > 250 && $
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        player1Score -= 250;
+        $player1ScoreDisplay.text(player1Score)
+        letters.forEach(function(letter, indexNum) {
+          if ($("#vowel-text").val().toUpperCase() === letter) {
+            $(`#indexNum${indexNum}`).removeClass("start");
+          }
+        })
+        $("#vowel-text").val("")
+      } else if (turn === "player2" && player2Score > 250 && $
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        player2Score -= 250;
+        $player2ScoreDisplay.text(player2Score)
+        letters.forEach(function(letter, indexNum) {
+          if ($("#vowel-text").val().toUpperCase() === letter) {
+            $(`#indexNum${indexNum}`).removeClass("start");
+          }
+        })
+        $("#vowel-text").val("")
+      } else if (turn === "player3" && player3Score > 250 && $
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        player3Score -= 250;
+        $player3ScoreDisplay.text(player3Score)
+        letters.forEach(function(letter, indexNum) {
+          if ($("#vowel-text").val().toUpperCase() === letter) {
+            $(`#indexNum${indexNum}`).removeClass("start");
+          }
+        })
+        $("#vowel-text").val("")
+      }
+
+    }) // function end
+    // closing brackets are the worst. I spent more time than I should with copy/paste mistakes becuase the closing brackets are hard. I eventaully deleted everything and started over.
+
+
+
+  // restart game!
+  // $("header").on("click", function() {
+  //   window.location.reload(true)
+  // })
 })

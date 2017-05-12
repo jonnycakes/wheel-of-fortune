@@ -110,15 +110,52 @@
         </div>
         <div class="modal-body">
           <p>You've just spun the wheel and landed on $<span id="spin-amount"> </span>! The amount of letters in the puzzle will be multiplied by that amount and added to your score!</p>
-          <input id="guess-text" type="text" name="text" placeholder="Enter Your Guess" />
+          <h4>Enter Your Guess:</h4> <input id="guess-text" type="text" name="text"  maxlength="1" />
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="submit-text" data-dismiss="modal">Submit</button>
         </div>
       </div>
-
+    </div>
   </div>
 
+  <!-- Modal for Vowels -->
+  <div class="modal fade" id="vowelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Buy a Vowel</h4>
+        </div>
+        <div class="modal-body">
+          <p>Please enter a vowel. You will be charged $250, even if it doesn't match.</p>
+          <input id="vowel-text" type="text" name="text" placeholder="Enter Your Guess" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submit-vowel" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Solve -->
+  <div class="modal fade" id="solveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Pat, I'd like to Solve the puzzle</h4>
+        </div>
+        <div class="modal-body">
+          <p>Solve</p>
+          <input id="solve-text" type="text" name="text" placeholder="Enter Your Guess" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submit-solve" data-dismiss="modal">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   </body>
 </html>

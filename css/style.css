@@ -4,12 +4,16 @@ html {
 }
 
 body {
-
+  /*background-image: url(/assets/bg.jpg);
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;*/
 }
 
 header {
   height: 100px;
   background-image: url(/assets/logo.jpeg);
+  background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -68,7 +72,7 @@ ul {
 li {
   display: inline-block;
   border: 1px #000 solid;
-  font-size: 40px;
+  font-size: 35px;
   width: 40px;
   background-color: #FFF;
   font-family: 'Work Sans', sans-serif;
@@ -88,6 +92,7 @@ li {
   border: 1px #aaa solid;
   border-radius: 10px;
   margin-top: 10px;
+  background-color: #eee;
 }
 
 #wheel {
@@ -118,9 +123,11 @@ li {
 }
 
 #guess-text {
-  width: 280px;
-  padding: 10px;
+  width: 85px;
+  padding: 15px;
   margin-bottom: 10px;
+  font-size: 50px;
+  text-align: center;
 }
 
 #submit-text {
@@ -224,6 +231,9 @@ li {
 
 }
 
+.modal-body {
+  text-align: center;
+}
 #submit-player-names {
 
 }
