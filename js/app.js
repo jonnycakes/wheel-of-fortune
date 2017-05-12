@@ -3,6 +3,7 @@ $(document).ready(function() {
 
   // Call for the bootstrap modal on page load. h/t http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load
   $('#myModal').modal('show')
+  $("#audio").get(1).play() // Audio, Mark gave me this idea.
 
   // aliases and init settings!
   var $player1NameText = $("#player-1-name");
@@ -146,12 +147,13 @@ $(document).ready(function() {
 
   // Spin the wheel!
   var spinWheel = function() {
+    $("#audio").get(0).play()
     $("#wheel").addClass("spin");
     calculateAmount();
     setTimeout(function() {
       $("#spinModal").modal("show")
       $("#wheel").removeClass("spin")
-    }, 2200)
+    }, 5900)
   }
 
   $("#wheel").on("click", spinWheel)

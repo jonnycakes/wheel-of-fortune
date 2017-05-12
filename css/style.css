@@ -100,8 +100,8 @@ li {
 }
 
 .spin {
-  transform: rotate(3600deg);
-  transition: all 2.0s ease-in-out;
+  transform: rotate(7920deg);
+  transition: all 5.5s ease-in-out;
 }
 
 #inputs {
