@@ -56,12 +56,11 @@ To see instructions for the game, please load the game and click "How to Play" o
 
 ---
 ### Unsolved problems
-As of Friday, there's a few post MVP stories and bugs still to tackle. In no particular order, they are:
-- I am not yet validating if a letter has already been chosen. So, a player can theoretically gain points for letters that have already been chosen.
-  - To resolve, I'm thinking of creating a new array of used characters. If the character enter matches a character in that used array, the turn will increment to the next player.
 - The puzzle board will wrap letters if the board becomes smaller. For long puzzles, this means a weird type of hyphenation happens.
   - A potential solution for this requires a total rewrite of the css and the way letters are generated.
   - A much better solution is to call the wrapping an intended feature, and yelling at any players who say otherwise.
+- My last two stories - bankruptcy and lose a turn, have not yet been implemented.
+  
 
 ### Inspirations
 - [Hangman game in javascript](https://codepen.io/cathydutton/pen/ldazc)

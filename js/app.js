@@ -37,12 +37,11 @@ $(document).ready(function() {
 
 
 
-  var amounts = [
-    "800", "350", "450", "700", "300", "600", "2500", "300", "600", "300",
-    "500", "550", "400", "300", "900", "500", "400", "900", "600", "400",
-    "300", "800", "350", "450", "700", "300", "600", "2500", "300", "600",
-    "300", "500", "550", "400", "300", "900", "500", "400", "900", "600",
-    "400", "300", "10000"
+  var amounts = ["800", "350", "450", "700", "300", "600", "2500", "300",
+    "600", "300", "500", "550", "400", "300", "900", "500", "400", "900",
+    "600", "400", "300", "800", "350", "450", "700", "300", "600", "2500",
+    "300", "600", "300", "500", "550", "400", "300", "900", "500", "400",
+    "900", "600", "400", "300", "10000", "loseTurn"
   ]
   var newValue;
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
@@ -150,10 +149,20 @@ $(document).ready(function() {
     $("#audio").get(0).play()
     $("#wheel").addClass("spin");
     calculateAmount();
-    setTimeout(function() {
-      $("#spinModal").modal("show")
-      $("#wheel").removeClass("spin")
-    }, 5900)
+    console.log(newValue)
+    if (isNaN(newValue)) {
+      setTimeout(function() {
+        $("#lostTurnModal").modal("show")
+        $("#wheel").removeClass("spin")
+        incrementTurn()
+      }, 5900)
+
+    } else {
+      setTimeout(function() {
+        $("#spinModal").modal("show")
+        $("#wheel").removeClass("spin")
+      }, 5900)
+    }
   }
 
   $("#wheel").on("click", spinWheel)

@@ -189,6 +189,28 @@
     </div>
   </div>
 
+
+  <!-- Modal for Lose a Turn -->
+  <div class="modal fade" id="lostTurnModal" tabindex="-1" role="dialog" aria-labelledby="instructModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Landed on: Lose a Turn</h4>
+        </div>
+        <div class="modal-body">
+          <img src="assets/lose.png" height="250px"/>
+          <p>Unfortuantely, you landed on the lose a turn wedge. That means we skip you. So sorry.</p>
+          </iframe>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="submit-lost-turn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <audio id="audio" class="audio" display="none">
      <source src="assets/wheel-sound.mp3" type="audio/mpeg">
   </audio>
