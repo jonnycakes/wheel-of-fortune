@@ -170,7 +170,13 @@ $(document).ready(function() {
       if ($("#guess-text").val().toUpperCase() === letter) {
         playerXScore += newValue;
         $playerXScoreDisplay.text(playerXScore)
-        $(`#indexNum${indexNum}`).removeClass("start") // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
+        $(`#indexNum${indexNum}`).addClass("letter-match")
+        $(`#indexNum${indexNum}`).removeClass("start")
+          // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
+        $("#ding").get(0).play()
+        setTimeout(function() {
+          $(`#indexNum${indexNum}`).removeClass("letter-match")
+        }, 2000)
         if (turn === "player1") {
           player1Score = playerXScore;
         } else
@@ -184,6 +190,7 @@ $(document).ready(function() {
     })
     $("#guess-text").val(""); // Clear input field
     if (startScore === playerXScore) {
+      $("#buzz").get(0).play()
       incrementTurn() // if the score stays the same, then it's the next players turn.
     }
   }

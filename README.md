@@ -66,6 +66,7 @@ As of Friday, there's a few post MVP stories and bugs still to tackle. In no par
 ### Inspirations
 - [Hangman game in javascript](https://codepen.io/cathydutton/pen/ldazc)
 - [Another simple hangman game](https://jsfiddle.net/phollott/x29ym2ag/)
+  - I've used these two on the morning of the first day I was working to get an idea of the logic to build this out. However, as time went on, my code diverged a lot from what they're doing (especially with my homemade turn tracking), and I stopped using them as reference after I got the board setup.
 - [Bootstrap modal help]( http://stackoverflow.com/questions/10233550/launch-bootstrap-modal-on-page-load)
-
-- I've used these on the morning of the first day I was working to get an idea of the logic to build this out. However, as time went on, my code diverged a lot from what they're doing (especially with my homemade turn tracking), and I stopped using them as reference after I got the board setup.
+- [Podium CodePen](http://codepen.io/davisenra/pen/rLVZJO)
+  - I started looking around to see how I can make my html and css look good (not just functional). I really liked the color and font combinations on this, and I went for it.

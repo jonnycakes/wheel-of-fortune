@@ -73,6 +73,11 @@ li {
   visibility: hidden;
 }
 
+.letter-match {
+  background-color: #f1c40f;
+  transition: all 0.5s ease-in-out
+}
+
 .special-char {
   background-color: #9CFFA8;
   height: 52px;
