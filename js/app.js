@@ -50,7 +50,7 @@ $(document).ready(function() {
   ]
   var vowels = ["A", "E", "I", "O", "U"]
   var specialChar = [" ", "!", ".", ",", "?"]
-
+  var usedLetters = []
 
   // Submit Player Names to be displayed
   $submitButton.on("click", function() {
@@ -188,6 +188,7 @@ $(document).ready(function() {
         }
       }
     })
+    usedLetters.push($("#guess-text").val().toUpperCase()) // push chosen letter into used letters array.
     $("#guess-text").val(""); // Clear input field
     if (startScore === playerXScore) {
       $("#buzz").get(0).play()
@@ -198,19 +199,27 @@ $(document).ready(function() {
   // Listener for consonant submission
   $("#submit-text").on("click", function() {
     if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
+        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
+        $("#guess-text").val().toUpperCase(), usedLetters) < 0) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
       consonantCheck(player1Score, $player1ScoreDisplay)
     } else if (turn === "player2" && $("#guess-text").val() !== "" &&
       $
       .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
+        $("#guess-text").val().toUpperCase(), usedLetters) < 0) {
       consonantCheck(player2Score, $player2ScoreDisplay)
 
     } else if (turn === "player3" && $("#guess-text").val() !== "" &&
       $
       .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
+        $("#guess-text").val().toUpperCase(), usedLetters) < 0) {
       consonantCheck(player3Score, $player3ScoreDisplay)
+    } else if ($.inArray(
+        $("#guess-text").val().toUpperCase(), usedLetters) > -1) {
+      alert("You've chosen a letter that's already been played.")
+      $("#guess-text").val("")
+      incrementTurn()
     } else { // The only way you can meet this last condition is if you messed up the input. And, for that, I award you no points, and may God have mercy on your soul.
       alert(
         "You picked a character that's not a consonant. Now, since you're choice is just that annoying, I'm gonna annoy you with an alert window. Yea, I could'a gone with the modal, but that wouldn't be half as annoying as you just were. Also, you lost your turn. Those are the actual rules."
@@ -223,7 +232,8 @@ $(document).ready(function() {
   // Now I can add in a keyPress listener because the text is easy peasy now that I've got the function!
 
   $("#guess-text").on("keypress", function(key) {
-    if (key.which === 13 && turn === "player1" && $("#guess-text").val() !==
+    if (key.which === 13 && turn === "player1" && $("#guess-text")
+      .val() !==
       "" && $.inArray(
         $("#guess-text").val().toUpperCase(), consonant) > -1) {
       consonantCheck(player1Score, $player1ScoreDisplay),
@@ -269,7 +279,8 @@ $(document).ready(function() {
     }
 
     // Placed here because we still charge the 250, but we need to move the turn and not invoke the rest of this function
-    if ($.inArray($("#vowel-text").val().toUpperCase(), letters) < 0) {
+    if ($.inArray($("#vowel-text").val().toUpperCase(), letters) <
+      0) {
       incrementTurn()
       return;
     }
@@ -286,13 +297,16 @@ $(document).ready(function() {
   // Listener
   $("#submit-vowel").on("click", function() {
       if (turn === "player1" && player1Score > 250 && $
-        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) { // If player-1 has turn AND player's score is more than 250 AND the data entered is a vowel.
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+      ) { // If player-1 has turn AND player's score is more than 250 AND the data entered is a vowel.
         vowelCheck(player1Score, $player1ScoreDisplay)
       } else if (turn === "player2" && player2Score > 250 && $
-        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+      ) {
         vowelCheck(player2Score, $player2ScoreDisplay)
       } else if (turn === "player3" && player3Score > 250 && $
-        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1) {
+        .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+      ) {
         vowelCheck(player3Score, $player3ScoreDisplay)
       } else {
         alert(
