@@ -275,13 +275,20 @@ $(document).ready(function() {
     // Placed here because we still charge the 250, but we need to move the turn and not invoke the rest of this function
     if ($.inArray($("#vowel-text").val().toUpperCase(), letters) <
       0) {
+      $("#buzz").get(0).play()
       incrementTurn()
       return;
     }
 
     letters.forEach(function(letter, indexNum) { // loop through  letters to reveal any vowels. This is essentially the same loop for consonants, but checking a different input box.
       if ($("#vowel-text").val().toUpperCase() === letter) {
-        $(`#indexNum${indexNum}`).removeClass("start");
+        $(`#indexNum${indexNum}`).addClass("letter-match")
+        $(`#indexNum${indexNum}`).removeClass("start")
+          // index number is passed along in the forEach so we can identify the LI that needs to be revealed.
+        $("#ding").get(0).play()
+        setTimeout(function() {
+          $(`#indexNum${indexNum}`).removeClass("letter-match")
+        }, 2000)
       }
     })
     $("#vowel-text").val("") // make the vowel input blank. Gotta do this last, otherwise the letter submitted to the loop is always blank.
@@ -309,9 +316,32 @@ $(document).ready(function() {
         $("#vowel-text").val("")
         incrementTurn()
       }
-
     }) // function end
     // closing brackets are the worst. I spent more time than I should with copy/paste mistakes becuase the closing brackets are hard. I eventaully deleted everything and started over.
+
+
+  $("#vowel-text").on("keypress", function(key) {
+    if (key.which === 13 && turn === "player1" && player1Score > 250 &&
+      $
+      .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+    ) { // If player-1 has turn AND player's score is more than 250 AND the data entered is a vowel.
+      vowelCheck(player1Score, $player1ScoreDisplay)
+      $('#vowelModal').modal('hide')
+    } else if (key.which === 13 && turn === "player2" && player2Score >
+      250 && $
+      .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+    ) {
+      vowelCheck(player2Score, $player2ScoreDisplay)
+      $('#vowelModal').modal('hide')
+    } else if (key.which === 13 && turn === "player3" && player3Score >
+      250 && $
+      .inArray($("#vowel-text").val().toUpperCase(), vowels) > -1
+    ) {
+      vowelCheck(player3Score, $player3ScoreDisplay)
+      $('#vowelModal').modal('hide')
+    }
+
+  })
 
 
   // **************************
