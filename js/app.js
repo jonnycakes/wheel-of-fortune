@@ -196,24 +196,25 @@ $(document).ready(function() {
     }
   }
 
+
+  // seperate this out to it's own function make the if statements when listening for consonant submission less verbose
+  // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
+  var consonantTrue = function(guess) {
+    if (guess !== "" && $.inArray(guess, consonant) > -1 && $.inArray(
+        guess, usedLetters) < 0) {
+      return true
+    }
+  }
+
+
   // Listener for consonant submission
   $("#submit-text").on("click", function() {
-    if (turn === "player1" && $("#guess-text").val() !== "" && $.inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
-        $("#guess-text").val().toUpperCase(), usedLetters) < 0) { // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
+    let $guessText = $("#guess-text").val().toUpperCase()
+    if (turn === "player1" && consonantTrue($guessText)) {
       consonantCheck(player1Score, $player1ScoreDisplay)
-    } else if (turn === "player2" && $("#guess-text").val() !== "" &&
-      $
-      .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
-        $("#guess-text").val().toUpperCase(), usedLetters) < 0) {
+    } else if (turn === "player2" && consonantTrue($guessText)) {
       consonantCheck(player2Score, $player2ScoreDisplay)
-
-    } else if (turn === "player3" && $("#guess-text").val() !== "" &&
-      $
-      .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1 && $.inArray(
-        $("#guess-text").val().toUpperCase(), usedLetters) < 0) {
+    } else if (turn === "player3" && consonantTrue($guessText)) {
       consonantCheck(player3Score, $player3ScoreDisplay)
     } else if ($.inArray(
         $("#guess-text").val().toUpperCase(), usedLetters) > -1) {
@@ -232,24 +233,17 @@ $(document).ready(function() {
   // Now I can add in a keyPress listener because the text is easy peasy now that I've got the function!
 
   $("#guess-text").on("keypress", function(key) {
-    if (key.which === 13 && turn === "player1" && $("#guess-text")
-      .val() !==
-      "" && $.inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+    let $guessText = $("#guess-text").val().toUpperCase()
+    if (key.which === 13 && turn === "player1" && consonantTrue(
+        $guessText)) {
       consonantCheck(player1Score, $player1ScoreDisplay),
         $('#spinModal').modal('hide')
-    } else if (key.which === 13 && turn === "player2" && $(
-        "#guess-text").val() !== "" &&
-      $
-      .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+    } else if (key.which === 13 && turn === "player2" && consonantTrue(
+        $guessText)) {
       consonantCheck(player2Score, $player2ScoreDisplay)
       $('#spinModal').modal('hide')
-    } else if (key.which === 13 && turn === "player3" && $(
-        "#guess-text").val() !== "" &&
-      $
-      .inArray(
-        $("#guess-text").val().toUpperCase(), consonant) > -1) {
+    } else if (key.which === 13 && turn === "player3" && consonantTrue(
+        $guessText)) {
       consonantCheck(player3Score, $player3ScoreDisplay)
       $('#spinModal').modal('hide')
     }
