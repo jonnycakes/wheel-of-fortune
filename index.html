@@ -112,6 +112,7 @@
           <h4 class="modal-title" id="myModalLabel">Spin the Wheel!</h4>
         </div>
         <div class="modal-body">
+          <span id="wedge"></span>
           <p>You've just spun the wheel and landed on $<span id="spin-amount"> </span>! The amount of letters in the puzzle will be multiplied by that amount and added to your score!</p>
           <p>You can only choose consonants here. You'll lose your turn if you enter incorrectly.</p>
           <h4>Enter Your Guess:</h4> <input id="guess-text" type="text" name="text"  maxlength="1" />
@@ -207,6 +208,27 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" id="submit-lost-turn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Lose a Turn -->
+  <div class="modal fade" id="bankruptModal" tabindex="-1" role="dialog" aria-labelledby="instructModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Landed on: Bankrupt</h4>
+        </div>
+        <div class="modal-body">
+          <img src="assets/bankrupt.png" height="250px"/>
+          <p>Unfortuantely, you landed on the "bankrupt" wedge. It is now the next player's turn.</p>
+          </iframe>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="submit-bankrupt" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

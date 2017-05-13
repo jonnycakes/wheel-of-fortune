@@ -36,12 +36,10 @@ $(document).ready(function() {
   ];
   var letters;
 
-  var amounts = ["800", "350", "450", "700", "300", "600", "2500", "300",
-    "600", "300", "500", "550", "400", "300", "900", "500", "400", "900",
-    "600", "400", "300", "800", "350", "450", "700", "300", "600", "2500",
-    "300", "600", "300", "500", "550", "400", "300", "900", "500", "400",
-    "900", "600", "400", "300", "5000", "loseTurn"
-  ]
+  var amounts = [100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 650, 700,
+      800, 900, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 650, 700,
+      800, 900, 2500, 3500, 5000, 10000, "loseTurn", "bankrupt"
+    ] // to implement the bankrupt, I had to refactor this array. Because I was being stupid, I made every item a string, even if it was a number. So, I had to retype all the values correctly. Then, I could drop the parseInt later down in the calculateAmount function.
 
   var newValue;
 
@@ -138,7 +136,7 @@ $(document).ready(function() {
 
   // Calculate a random amount when the wheel is spun
   var calculateAmount = function() {
-    newValue = parseInt(amounts[Math.floor(Math.random() * amounts.length)])
+    newValue = amounts[Math.floor(Math.random() * amounts.length)]
     $("#spin-amount").text(newValue);
   }
 
@@ -153,22 +151,37 @@ $(document).ready(function() {
     calculateAmount();
     console.log(newValue)
 
-    // Check if it's landed on a number or a text value
-    // Added this part towards the end. If the value you land on isn't a number, it goes into the "lose a turn" modal.
-    if (isNaN(newValue)) {
-      setTimeout(function() {
+    // Check if it's landed on a number or a string
+    // Added this part towards the end. Lose a turn and bankrupt are now values it can land on
+    setTimeout(function() {
+      if (newValue === "loseTurn") {
         $("#lostTurnModal").modal("show")
         $("#wheel").removeClass("spin")
         $("#bankrupt").get(0).play()
         incrementTurn()
-      }, 5900)
-
-    } else {
-      setTimeout(function() {
+      } else if (newValue === "bankrupt") {
+        if (turn === "player1") {
+          player1Score = 0;
+          $player1ScoreDisplay.text("0")
+        } else if (turn === "player2") {
+          player2Score = 0;
+          $player2ScoreDisplay.text("0")
+        } else if (turn === "player3") {
+          player3Score = 0;
+          $player3ScoreDisplay.text("0")
+        }
+        $("#bankruptModal").modal("show")
+        $("#wheel").removeClass("spin")
+        $("#bankrupt").get(0).play()
+        incrementTurn();
+      } else {
         $("#spinModal").modal("show")
         $("#wheel").removeClass("spin")
-      }, 5900)
-    }
+        $("#wedge").replaceWith(
+          `<span id="wedge"><img src="assets/${newValue}.png" height="125px"/></span>` // this will show the image of the wedge you land on.
+        )
+      }
+    }, 5900)
   }
 
   // Listen for click on the wheel to call the spin wheel function.
