@@ -36,15 +36,16 @@ $(document).ready(function() {
   ];
   var letters;
 
-
-
   var amounts = ["800", "350", "450", "700", "300", "600", "2500", "300",
     "600", "300", "500", "550", "400", "300", "900", "500", "400", "900",
     "600", "400", "300", "800", "350", "450", "700", "300", "600", "2500",
     "300", "600", "300", "500", "550", "400", "300", "900", "500", "400",
     "900", "600", "400", "300", "5000", "loseTurn"
   ]
+
   var newValue;
+
+
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
     "P", "Q", "R", "S", "T", "V", "X", "Z", "W", "Y"
   ]
@@ -152,6 +153,7 @@ $(document).ready(function() {
     calculateAmount();
     console.log(newValue)
 
+    // Check if it's landed on a number or a text value
     // Added this part towards the end. If the value you land on isn't a number, it goes into the "lose a turn" modal.
     if (isNaN(newValue)) {
       setTimeout(function() {
@@ -169,13 +171,14 @@ $(document).ready(function() {
     }
   }
 
+  // Listen for click on the wheel to call the spin wheel function.
   $("#wheel").on("click", spinWheel)
 
   // **************************
   // **************************
   // **************************
 
-  // Pick a letter
+  // Player Picks a Letter
   // REFACTORED!!!!!!! Check my comments on the earlier commits. But, I pulled out the logic into a new function called consonantCheck. My biggest pain points were a) keeping track of close brackets, and b) names that include dollar signs. But, it's a whole lot more clearner now! (It may not seem like it with the verbose comments, but whatevas)
   var consonantCheck = function(playerXScore, $playerXScoreDisplay) {
     let startScore = playerXScore; // Set what the score is before iterating, to see if it goes up later
@@ -332,7 +335,7 @@ $(document).ready(function() {
     }) // function end
     // closing brackets are the worst. I spent more time than I should with copy/paste mistakes becuase the closing brackets are hard. I eventaully deleted everything and started over.
 
-
+  //keypress vowel listener
   $("#vowel-text").on("keypress", function(key) {
     if (key.which === 13 && turn === "player1" && player1Score > 250 &&
       $

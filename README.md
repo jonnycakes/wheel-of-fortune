@@ -17,14 +17,18 @@ User stories can be found [here](https://www.pivotaltracker.com/n/projects/20216
 - normalize.css - Used to edit stylings to make them consistent.
 - Bootstrap.css - Installed to get common style elements
 - Bootstrap.js - Installed primarily to get my modal window looking awesome. I am going to try for modals rather than alerts!
+- CSS animation
+  - Spin the wheel and letter reveals take advantage of transform and transition.
 - jQuery
   - It's a dependency of bootstrap.js
   - It's syntactically easier than vanilla JS
+- HTML 5 audio
+  - In order to make the game more authentic, I've included a bunch of sound effects. My apologizes if they become annoying.
 
 ---
 
 ### Approach taken
-For branching, I'm going to reference [this document about branching models](http://nvie.com/posts/a-successful-git-branching-model/). Master is the branch that should always reflect a *production-ready* state. So, not doing the :gh-pages thing.
+For branching, I'm going to reference [this document about branching models](http://nvie.com/posts/a-successful-git-branching-model/). The tl;dr - the Master branch is the branch that should always reflect a *production-ready* state. So, not doing the :gh-pages thing.
 
 My overarching theory behind developing this revolved around two concepts: hitting "MVP" (Minimal Viable Product), and "make it work first, make it work well later".
 
@@ -59,8 +63,9 @@ To see instructions for the game, please load the game and click "How to Play" o
 - The puzzle board will wrap letters if the board becomes smaller. For long puzzles, this means a weird type of hyphenation happens.
   - A potential solution for this requires a total rewrite of the css and the way letters are generated.
   - A much better solution is to call the wrapping an intended feature, and yelling at any players who say otherwise.
-- My last two stories - bankruptcy and lose a turn, have not yet been implemented.
-  
+- My story, "Land on Bankrupt", has not been implemented. But, it's kinda a mean story, so I'm okay with not getting to it.
+- It doesn't look good on a small scale. I've done some bootstrap magic to have it responsive on a small screen, but the usability suffers on smaller screens.
+
 
 ### Inspirations
 - [Hangman game in javascript](https://codepen.io/cathydutton/pen/ldazc)
