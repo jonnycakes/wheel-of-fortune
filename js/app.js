@@ -31,7 +31,8 @@ $(document).ready(function() {
     "taco", "JS is short for javascript", "jquery",
     "css", "CASCADING STYLE SHEETS", "html",
     "concatenation", "AUTOMAGICALLY",
-    "Check your spelling", "palmarius"
+    "Check your spelling", "palmarius", "palmarius students",
+    "git commit"
   ];
   var letters;
 
@@ -41,7 +42,7 @@ $(document).ready(function() {
     "600", "300", "500", "550", "400", "300", "900", "500", "400", "900",
     "600", "400", "300", "800", "350", "450", "700", "300", "600", "2500",
     "300", "600", "300", "500", "550", "400", "300", "900", "500", "400",
-    "900", "600", "400", "300", "10000", "loseTurn"
+    "900", "600", "400", "300", "5000", "loseTurn"
   ]
   var newValue;
   var consonant = ["B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N",
@@ -150,10 +151,13 @@ $(document).ready(function() {
     $("#wheel").addClass("spin");
     calculateAmount();
     console.log(newValue)
+
+    // Added this part towards the end. If the value you land on isn't a number, it goes into the "lose a turn" modal.
     if (isNaN(newValue)) {
       setTimeout(function() {
         $("#lostTurnModal").modal("show")
         $("#wheel").removeClass("spin")
+        $("#bankrupt").get(0).play()
         incrementTurn()
       }, 5900)
 
