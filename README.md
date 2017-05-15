@@ -6,6 +6,8 @@
 
  A simple "Wheel of Fortune" type game as my first GA WDI assignment.
 
+[Link to the Game](jonnycakes.github.io/wheel-of-fortune/)
+
 [Find the Presentation Here](https://docs.google.com/presentation/d/1EYfGA-3EHHJKsKT29-8P2l2ob67cC7jLbz1iKEZUfJg/edit?usp=sharing)
 ---
 ### User Stories
