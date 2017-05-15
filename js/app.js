@@ -36,7 +36,10 @@ $(document).ready(function() {
   ];
   var letters;
 
-  var amounts = [100, "bankrupt"] // to implement the bankrupt, I had to refactor this array. Because I was being stupid, I made every item a string, even if it was a number. So, I had to retype all the values correctly. Then, I could drop the parseInt later down in the calculateAmount function.
+  var amounts = [100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 650, 700, 800, 900, 100, 150,
+      200, 250, 300, 350, 400, 450, 500, 600, 650, 700, 800, 900, 2500, 3500, 5000, 10000,
+      "loseTurn", "bankrupt"
+    ] // to implement the bankrupt, I had to refactor this array. Because I was being stupid, I made every item a string, even if it was a number. So, I had to retype all the values correctly. Then, I could drop the parseInt later down in the calculateAmount function.
 
   var newValue;
 
