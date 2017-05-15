@@ -197,3 +197,16 @@ li {
   font-weight: bold;
   color: #3D74E8;
 }
+
+@media (max-width:767px) {
+  .player {
+    margin-top: 10px;
+    display: inline-block;
+    width: 32%;
+    box-sizing: border-box;
+  }
+
+  .col-sm-3 {
+    text-align: center;
+  }
+}
