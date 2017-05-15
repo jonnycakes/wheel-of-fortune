@@ -229,8 +229,7 @@ $(document).ready(function() {
   // seperate this out to it's own function make the if statements when listening for consonant submission less verbose
   // inArray() is totally awesome. It saved me from yet another loop, and was a really happy google find.
   var consonantTrue = function(guess) {
-    if (guess !== "" && $.inArray(guess, consonant) > -1 && $.inArray(
-        guess, usedLetters) < 0) {
+    if (guess !== "" && $.inArray(guess, consonant) > -1 && $.inArray(guess, usedLetters) < 0) {
       return true
     }
   }
